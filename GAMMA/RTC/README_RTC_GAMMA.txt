@@ -7,15 +7,15 @@ Processing Date/Time: [DATE] [TIME] UTC
 
 The folder and each of its contents all share the same base name, using the following convention:  
 S1x_yy_RTzz_aaaaaaaaTbbbbbb_c_def  
-x:        	   Sentinel-1 Mission (A or B)  
-yy:       	  Beam Mode  
-zz:       	  Terrain Correction Resolution  
+x:        	Sentinel-1 Mission (A or B)  
+yy:       	Beam Mode  
+zz:       	Terrain Correction Resolution  
 aaaaaaaa: 	Start Date of Acquisition (YYYYMMDD)  
 bbbbbb:    	Start Time of Acquisition (HHMMSS)  
-c:        	   Processor (Gamma or S1TBX)  
-d:        	   gamma-0 (g) or sigma-0 (s) output  
-e:        	   amplitude (a) or power (p) output  
-f:        	   Not filtered (n) or Filtered (f)  
+c:        	Processor (Gamma or S1TBX)  
+d:        	gamma-0 (g) or sigma-0 (s) output  
+e:        	amplitude (a) or power (p) output  
+f:        	Not filtered (n) or Filtered (f)  
 
 The source granule used to generate the products contained in this folder is:  
 [GRAN_NAME]  

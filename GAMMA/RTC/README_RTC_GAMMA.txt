@@ -15,7 +15,7 @@ bbbbbb:    	Start Time of Acquisition (HHMMSS)
 c:        	Processor (Gamma or S1TBX)  
 d:        	gamma-0 (g) or sigma-0 (s) output  
 e:        	amplitude (a) or power (p) output  
-f:        	Not filtered (n) or Filtered (f)  
+f:        	not filtered (n) or filtered (f)
 
 The source granule used to generate the products contained in this folder is:  
 [GRAN_NAME]  
@@ -67,24 +67,24 @@ PNG files are generated in two different resolutions for quick visualization of 
 
 All products will include a grayscale png browse image in both resolutions. It is a rendering of the primary polarization data, scaled to an ASF standard to display nicely in grayscale. The low-resolution image is designated by a simple .png extension, while the tag _large.png indicates the medium-resolution image. 
 
-For dual-pol products, a false color png browse image is generated in both resolutions. It is a rendering of the primary and cross-polarization data, scaled to an ASF standard to display nicely in color. These files are additionally tagged with _rgb, but otherwise have the same tags/extensions as the grayscale browse images.
+For dual-pol products, a false-color png browse image is generated in both resolutions. It is a rendering of the primary and cross-polarization data, scaled to an ASF standard to display nicely in color. These files are additionally tagged with _rgb, but otherwise have the same tags/extensions as the grayscale browse images.
 
 KMZ files are generated in the higher resolution for use in Google Earth and other compatible applications. All products will include a grayscale kmz image, and dual-pol products will also include a color browse kmz image.
 
 -------------
 ## 3. DEM used to correct the data
 
-The digital elevation model layer is included with standard products, but is optional when placing a custom order for imagery. This layer is tagged with -dem.tif
+The Digital Elevation Model (DEM) layer is included with standard products, but is optional when placing a custom order for imagery. This layer is tagged with -dem.tif
 
-The best digital elevation model publicly available for each granule is used in the RTC process, so different granules may be processed using different source DEM layers. The resolution of the source DEM varies depending on the location of the granule. The DEM is clipped from the source layer to the size needed for full granule coverage, or to the extent of the available DEM source data if full coverage is not available. It is then resampled from the native DEM resolution to [SPACING] m for use in RTC.
+The best DEM publicly available for each granule is used in the RTC process, so different granules may be processed using different source DEM layers. The resolution of the source DEM varies depending on the location of the granule. The DEM is clipped from the source layer to the size needed for full granule coverage, or to the extent of the available DEM source data if full coverage is not available. It is then resampled from the native DEM resolution to [SPACING] m for use in RTC processing.
+
+The DEM sources include the National Elevation Dataset (NED), the Shuttle Radar Topography Mission (SRTM), the Copernicus Land Monitoring Service EU-DEM (EUDEM), the Greenland Ice sheet Mapping Project DEM (GIMP), and the Reference Elevation Model of Antarctica DSM (REMA).
 
 The source of the DEM for this particular product is [DEM], which has a native resolution of [RESA] arc seconds (about [RESM] meters).  
 
 *Refer to the -dem.tif.xml file for additional information about the specific DEM included with this product, including use and citation requirements.*  
 
-The sources include the National Elevation Dataset (NED), the Shuttle Radar Topography Mission (SRTM), the Copernicus Land Monitoring Service EU-DEM (EUDEM), the Greenland Ice sheet Mapping Project DEM (GIMP), and the Reference Elevation Model of Antarctica DSM (REMA).
-
-The NED provides the best available public domain raster elevation data of the conterminous United States, Alaska, Hawaii, and territorial islands in a seamless format. The NED is derived from diverse source data, processed to a common coordinate system and unit of vertical measure. For more information, refer to https://pubs.er.usgs.gov/publication/70201572. To download the data, visit https://viewer.nationalmap.gov/basic and expand the Elevation Products (3DEP) section.  
+The NED provides the best available public domain raster elevation data of the conterminous United States, Alaska, Hawaii, and territorial islands in a seamless format. The NED is derived from diverse source data, processed to a common coordinate system and unit of vertical measure. For more information, refer to https://pubs.er.usgs.gov/publication/70201572. To download the data, visit https://viewer.nationalmap.gov/basic and expand the Elevation Products (3DEP) section.
 
 The SRTM was flown aboard the space shuttle Endeavour February 11-22, 2000. The National Aeronautics and Space Administration (NASA) and the National Geospatial-Intelligence Agency (NGA) participated in an international project to acquire radar data which were used to create the first near-global set of land elevations. For more information and to access the full SRTM dataset, refer to https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-shuttle-radar-topography-mission-srtm-1-arc?qt-science_center_objects=0#qt-science_center_objects.  
 
@@ -138,7 +138,7 @@ _There are 17 possible different pixel values, indicating the layover, shadow, a
 -------------
 ## 6. ArcGIS-compatible xml metadata files
 
-Each raster in this folder has an associated xml file. It is named with the same filename as the raster, but also includes an .xml extension. When any of the rasters are viewed in ArcGIS, the associated xml file is recognized by the software, and the contents will display in the Item Description (ArcGIS Desktop) or Metadata (ArcGIS Pro) for that raster. Once the file is viewed in ArcGIS, the software will update the xml file to include metadata inherent to the raster (geographic extent, raster format, etc.) along with the descriptive metadata included in the original xml file.
+Each raster in this folder has an associated xml file. It is named with the same filename as the raster, but also includes a .xml extension. When any of the rasters are viewed in ArcGIS, the associated xml file is recognized by the software, and the contents will display in the Item Description (ArcGIS Desktop) or Metadata (ArcGIS Pro) for that raster. Once the file is viewed in ArcGIS, the software will update the xml file to include metadata inherent to the raster (geographic extent, raster format, etc.) along with the descriptive metadata included in the original xml file.
 
 ArcGIS users should take care not to edit the xml files directly, or to change filenames outside of the ArcGIS environment, as it may render the metadata files unreadable by ArcGIS. 
 
@@ -157,13 +157,13 @@ The shapefile (comprised of the four files tagged with _shape) contains polygons
 -------------
 ## 9. Log file
 
-A log file is generated during processing, which includes all of the parameters used for each part of the RTC process. It has a .log extension.
+A textfile is generated during processing, which includes the parameters used and step-by-step processing history for the product. It has a .log extension.
 
 *************
 ### RTC Processing ###
 
 The basic steps in the radiometric terrain correction process are as follows:  
-1.  Data granule is ingested into gamma format - calibration is done during this step. 
+1.  Data granule is ingested into the format required by GAMMA software - calibration is done during this step.
 2.  If required, data is multi-looked to the desired number of looks (default for 30-m products is 6 looks for GRD granules and 3 for SLC; 10-m products default to one look). This product used [LOOKS] look(s). 
 3.  A DEM is extracted from the ASF DEM heap covering the granule to be corrected. 
 4.  A mapping function is created, mapping from DEM space into SAR space. 
@@ -172,7 +172,7 @@ The basic steps in the radiometric terrain correction process are as follows:
 7.  The mapping function is updated with the coregistration information. 
 8.  The SAR image is radiometrically corrected using a pixel integration approach to remove radiometric distortions in foreshortening or layover areas. 
 9.  The inversion of the mapping function is used to terrain correct and geocode the radiometrically corrected SAR image. 
-10. Post processing creates geotiffs, pngs, kmzs, and metadata.
+10. Post processing creates GeoTIFF, PNG and KMZ files, along with associated metadata.
 
 The Algorithm Theoretical Basis Document (ATBD), which provides the theoretical background of the algorithms and processing flows used for the generation of this product, is available here:  
 https://media.asf.alaska.edu/uploads/sentinel/RTC_ATBD_Sentinel.pdf
@@ -194,5 +194,5 @@ uso@asf.alaska.edu
 907-474-5041
 
 -------------
-Revised 2020-03-11
+Revised 2020-04-06
 

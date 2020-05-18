@@ -75,7 +75,7 @@ KMZ files are generated in the higher resolution for use in Google Earth and oth
 -------------
 ## 3. DEM used to correct the data
 
-The Digital Elevation Model (DEM) layer is included with standard products, but is optional when placing a custom order for imagery. This layer is tagged with -dem.tif
+The Digital Elevation Model (DEM) layer is included with standard products, but is optional when placing a custom order for imagery. This layer is tagged with _dem.tif
 
 The best DEM publicly available for each granule is used in the RTC process, so different granules may be processed using different source DEM layers. The resolution of the source DEM varies depending on the location of the granule. The DEM is clipped from the source layer to the size needed for full granule coverage, or to the extent of the available DEM source data if full coverage is not available. It is then resampled from the native DEM resolution to [SPACING] m for use in RTC processing.
 
@@ -83,7 +83,7 @@ The DEM sources include the National Elevation Dataset (NED), the Shuttle Radar 
 
 The source of the DEM for this particular product is [DEM], which has a native resolution of [RESA] arc seconds (about [RESM] meters).  
 
-*Refer to the -dem.tif.xml file for additional information about the specific DEM included with this product, including use and citation requirements.*
+*Refer to the _dem.tif.xml file for additional information about the specific DEM included with this product, including use and citation requirements.*
 
 __Summary of the DEMs used by ASF for RTC Processing__
 
@@ -100,14 +100,14 @@ The *REMA* DSM was constructed from hundreds of thousands of individual stereosc
 -------------
 ## 4. Incidence angle map
 
-The incidence angle map is included with standard products, but is optional when placing a custom order for imagery. This layer is tagged with -inc_map.tif
+The incidence angle map is included with standard products, but is optional when placing a custom order for imagery. This layer is tagged with _inc_map.tif
 
 This map records the projected local incidence angle for each pixel in the RTC image. The incidence angle is the angle between the incident radar beam and the direction perpendicular to the ground surface (based on the DEM), expressed in degrees.
 
 -------------
 ## 5. Layover-shadow mask
 
-The layover/shadow mask indicates which pixels in the RTC image have been affected by layover and shadow. This layer is tagged with -ls_map.tif.  The pixel values are 1 for layover/shadow areas and 0 for areas that are not affected.
+The layover/shadow mask indicates which pixels in the RTC image have been affected by layover and shadow. This layer is tagged with _ls_map.tif.  The pixel values are 1 for layover/shadow areas and 0 for areas that are not affected.
 
 -------------
 ## 6. ArcGIS-compatible xml metadata files
@@ -158,4 +158,4 @@ uso@asf.alaska.edu
 907-474-5041
 
 -------------
-Revised 2020-04-07
+Revised 2020-05-18

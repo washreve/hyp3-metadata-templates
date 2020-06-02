@@ -102,7 +102,7 @@ The *REMA* DSM was constructed from hundreds of thousands of individual stereosc
 
 The incidence angle map is included with standard products, but is optional when placing a custom order for imagery. This layer is tagged with _inc_map.tif
 
-This map records the projected local incidence angle for each pixel in the RTC image. The incidence angle is the angle between the incident radar beam and the direction perpendicular to the ground surface (based on the DEM), expressed in degrees.
+This map records the local incidence angle for each pixel in the RTC image. The incidence angle is the angle between the incident radar beam and the direction perpendicular to the ground surface (based on the DEM), expressed in degrees.
 
 -------------
 ## 5. Layover-shadow mask
@@ -158,4 +158,4 @@ uso@asf.alaska.edu
 907-474-5041
 
 -------------
-Revised 2020-05-18
+Revised 2020-06-02

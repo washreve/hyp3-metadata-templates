@@ -122,7 +122,7 @@
     <mdHrLv>
         <ScopeCd value="005"/>
     </mdHrLv>
-    <mdFileID>RTC_S1TBX_Template_inc_200409</mdFileID>
+    <mdFileID>RTC_S1TBX_Template_inc_200602</mdFileID>
     <mdLang>
         <languageCode value="eng"/>
         <countryCode value="US"/>
@@ -161,7 +161,7 @@
             </scpLvl>
         </dqScope>
         <dataLineage>
-            <statement>The incidence angle map is generated during RTC processing, using the DEM to determine the projected local incidence angle value in degrees.</statement>
+            <statement>The incidence angle map is generated during RTC processing, using the DEM to determine the local incidence angle value in degrees.</statement>
         </dataLineage>
     </dqInfo>
     <mdMaint xmlns="">

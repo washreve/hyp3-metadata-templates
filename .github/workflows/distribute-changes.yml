@@ -172,4 +172,3 @@ jobs:
           pr_draft: false
           pr_allow_empty: true
           github_token: ${{ secrets.TOOLS_BOT_PAK }}
-

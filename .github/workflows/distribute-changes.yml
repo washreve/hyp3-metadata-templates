@@ -78,18 +78,18 @@ jobs:
 
       - name: open PR to hyp3-insar-gamma
         uses: repo-sync/pull-request@v2
-          with:
-            source_branch:  ${{ steps.patch.outputs.branch }}
-            destination_branch: develop
-            pr_title: Update metadata templates
-            pr_body: |
-              Applying ${{ steps.patch.outputs.branch }}.patch, see:
-              https://github.com/ASFHyP3/hyp3-metadata-templates/compare/${{ github.event.before }}..$GITHUB_SHA
-            pr_assignee: ASFHyP3/tools
-            pr_label: tools-bot
-            pr_draft: false
-            pr_allow_empty: true
-            github_token: ${{ secrets.TOOLS_BOT_PAK }}
+        with:
+          source_branch:  ${{ steps.patch.outputs.branch }}
+          destination_branch: develop
+          pr_title: Update metadata templates
+          pr_body: |
+            Applying ${{ steps.patch.outputs.branch }}.patch, see:
+            https://github.com/ASFHyP3/hyp3-metadata-templates/compare/${{ github.event.before }}..$GITHUB_SHA
+          pr_assignee: ASFHyP3/tools
+          pr_label: tools-bot
+          pr_draft: false
+          pr_allow_empty: true
+          github_token: ${{ secrets.TOOLS_BOT_PAK }}
 
 
   hyp3-rtc-gamma:
@@ -119,18 +119,18 @@ jobs:
 
       - name: open PR to hyp3-rtc-gamma
         uses: repo-sync/pull-request@v2
-          with:
-            source_branch:  ${{ steps.patch.outputs.branch }}
-            destination_branch: develop
-            pr_title: Update metadata templates
-            pr_body: |
-              Applying ${{ steps.patch.outputs.branch }}.patch, see:
-              https://github.com/ASFHyP3/hyp3-metadata-templates/compare/${{ github.event.before }}..$GITHUB_SHA
-            pr_assignee: ASFHyP3/tools
-            pr_label: tools-bot
-            pr_draft: false
-            pr_allow_empty: true
-            github_token: ${{ secrets.TOOLS_BOT_PAK }}
+        with:
+          source_branch:  ${{ steps.patch.outputs.branch }}
+          destination_branch: develop
+          pr_title: Update metadata templates
+          pr_body: |
+            Applying ${{ steps.patch.outputs.branch }}.patch, see:
+            https://github.com/ASFHyP3/hyp3-metadata-templates/compare/${{ github.event.before }}..$GITHUB_SHA
+          pr_assignee: ASFHyP3/tools
+          pr_label: tools-bot
+          pr_draft: false
+          pr_allow_empty: true
+          github_token: ${{ secrets.TOOLS_BOT_PAK }}
 
 
   hyp3-insar-isce:
@@ -160,16 +160,16 @@ jobs:
 
       - name: open PR to hyp3-insar-isce
         uses: repo-sync/pull-request@v2
-          with:
-            source_branch:  ${{ steps.patch.outputs.branch }}
-            destination_branch: develop
-            pr_title: Update metadata templates
-            pr_body: |
-              Applying ${{ steps.patch.outputs.branch }}.patch, see:
-              https://github.com/ASFHyP3/hyp3-metadata-templates/compare/${{ github.event.before }}..$GITHUB_SHA
-            pr_assignee: ASFHyP3/tools
-            pr_label: tools-bot
-            pr_draft: false
-            pr_allow_empty: true
-            github_token: ${{ secrets.TOOLS_BOT_PAK }}
+        with:
+          source_branch:  ${{ steps.patch.outputs.branch }}
+          destination_branch: develop
+          pr_title: Update metadata templates
+          pr_body: |
+            Applying ${{ steps.patch.outputs.branch }}.patch, see:
+            https://github.com/ASFHyP3/hyp3-metadata-templates/compare/${{ github.event.before }}..$GITHUB_SHA
+          pr_assignee: ASFHyP3/tools
+          pr_label: tools-bot
+          pr_draft: false
+          pr_allow_empty: true
+          github_token: ${{ secrets.TOOLS_BOT_PAK }}
 

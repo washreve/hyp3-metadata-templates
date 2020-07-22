@@ -1,0 +1,172 @@
+name: Distribute metadata changes
+
+on: push
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      gamma-insar: ${{ steps.filter.outputs.gamma-insar }}
+      gamma-rtc: ${{ steps.filter.outputs.gamma-rtc }}
+      isce-insar: ${{ steps.filter.outputs.isce-insar }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: dorny/paths-filter@v2.2.0
+        id: filter
+        with:
+          # inline YAML
+          filters: |
+            gamma-insar:
+              - 'GAMMA/InSAR/*'
+            gamma-rtc:
+              - 'GAMMA/RTC/*'
+            isce-insar:
+              - 'ISCE/InSAR/*'
+
+      - name: GAMMA InSAR patch
+        if: steps.filter.outputs.gamma-insar == 'true'
+        run: |
+          git diff ${{ github.event.before }} $GITHUB_SHA -- GAMMA/InSAR/* > hyp3-insar-gamma-${GITHUB_SHA:0:7}.patch
+
+      - name: GAMMA RTC patch
+        if: steps.filter.outputs.gamma-rtc == 'true'
+        run: |
+          git diff ${{ github.event.before }} $GITHUB_SHA -- GAMMA/RTC/* > hyp3-rtc-gamma-${GITHUB_SHA:0:7}.patch
+
+      - name: ISCE InSAR patch
+        if: steps.filter.outputs.isce-insar == 'true'
+        run: |
+          git diff ${{ github.event.before }} $GITHUB_SHA -- ISCE/InSAR/* > hyp3-insar-isce-${GITHUB_SHA:0:7}.patch
+
+      - name: upload patch
+        uses: actions/upload-artifact@v2
+        # NOTE: Will warn, not error, if no matches found
+        with:
+          name: patches
+          path: 'hyp3-*.patch'
+
+
+  hyp3-insar-gamma:
+    runs-on: ubuntu-latest
+    needs: changes
+    if: ${{ needs.changes.outputs.gamma-insar == 'true' }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: ASFHyP3/hyp3-insar-gamma
+          token: ${{ secrets.TOOLS_BOT_PAK }}
+      - uses: actions/download-artifact@v2
+        with:
+          name: patches
+
+      - name: create patch branch
+        id: patch
+        run: |
+          export PATCH_FILE=$(find . -iname "hyp3-insar-gamma-*.patch" | head -1)
+          export PATCH_BRANCH=${${PATCH_FILE#./}/.patch}
+          echo "::set-output name=branch::${PATCH_BRANCH}"
+          git checkout -b $PATCH_BRANCH
+          cd hyp3_insar_gamma/etc
+          patch -p3 < ../../${PATCH_FILE}
+          git commit -m "Apply ${PATCH_FILE}"
+          git push origin $PATCH_BRANCH
+
+      - name: open PR to hyp3-insar-gamma
+        uses: repo-sync/pull-request@v2
+          with:
+            source_branch:  ${{ steps.patch.outputs.branch }}
+            destination_branch: develop
+            pr_title: Update metadata templates
+            pr_body: |
+              Applying ${{ steps.patch.outputs.branch }}.patch, see:
+              https://github.com/ASFHyP3/hyp3-metadata-templates/compare/${{ github.event.before }}..$GITHUB_SHA
+            pr_assignee: ASFHyP3/tools
+            pr_label: tools-bot
+            pr_draft: false
+            pr_allow_empty: true
+            github_token: ${{ secrets.TOOLS_BOT_PAK }}
+
+
+  hyp3-rtc-gamma:
+    runs-on: ubuntu-latest
+    needs: changes
+    if: ${{ needs.changes.outputs.gamma-rtc == 'true' }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: ASFHyP3/hyp3-rtc-gamma
+          token: ${{ secrets.TOOLS_BOT_PAK }}
+      - uses: actions/download-artifact@v2
+        with:
+          name: patches
+
+      - name: create patch branch
+        id: patch
+        run: |
+          export PATCH_FILE=$(find . -iname "hyp3-rtc-gamma-*.patch" | head -1)
+          export PATCH_BRANCH=${${PATCH_FILE#./}/.patch}
+          echo "::set-output name=branch::${PATCH_BRANCH}"
+          git checkout -b $PATCH_BRANCH
+          cd hyp3_rtc_gamma/etc
+          patch -p3 < ../../${PATCH_FILE}
+          git commit -m "Apply ${PATCH_FILE}"
+          git push origin $PATCH_BRANCH
+
+      - name: open PR to hyp3-rtc-gamma
+        uses: repo-sync/pull-request@v2
+          with:
+            source_branch:  ${{ steps.patch.outputs.branch }}
+            destination_branch: develop
+            pr_title: Update metadata templates
+            pr_body: |
+              Applying ${{ steps.patch.outputs.branch }}.patch, see:
+              https://github.com/ASFHyP3/hyp3-metadata-templates/compare/${{ github.event.before }}..$GITHUB_SHA
+            pr_assignee: ASFHyP3/tools
+            pr_label: tools-bot
+            pr_draft: false
+            pr_allow_empty: true
+            github_token: ${{ secrets.TOOLS_BOT_PAK }}
+
+
+  hyp3-insar-isce:
+    runs-on: ubuntu-latest
+    needs: changes
+    if: ${{ needs.changes.outputs.isce-insar == 'true' }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: ASFHyP3/hyp3-insar-isce
+          token: ${{ secrets.TOOLS_BOT_PAK }}
+      - uses: actions/download-artifact@v2
+        with:
+          name: patches
+
+      - name: create patch branch
+        id: patch
+        run: |
+          export PATCH_FILE=$(find . -iname "hyp3-insar-isce-*.patch" | head -1)
+          export PATCH_BRANCH=${${PATCH_FILE#./}/.patch}
+          echo "::set-output name=branch::${PATCH_BRANCH}"
+          git checkout -b $PATCH_BRANCH
+          cd hyp3_insar_isce/etc
+          patch -p3 < ../../${PATCH_FILE}
+          git commit -m "Apply ${PATCH_FILE}"
+          git push origin $PATCH_BRANCH
+
+      - name: open PR to hyp3-insar-isce
+        uses: repo-sync/pull-request@v2
+          with:
+            source_branch:  ${{ steps.patch.outputs.branch }}
+            destination_branch: develop
+            pr_title: Update metadata templates
+            pr_body: |
+              Applying ${{ steps.patch.outputs.branch }}.patch, see:
+              https://github.com/ASFHyP3/hyp3-metadata-templates/compare/${{ github.event.before }}..$GITHUB_SHA
+            pr_assignee: ASFHyP3/tools
+            pr_label: tools-bot
+            pr_draft: false
+            pr_allow_empty: true
+            github_token: ${{ secrets.TOOLS_BOT_PAK }}
+

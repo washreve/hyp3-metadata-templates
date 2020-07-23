@@ -67,6 +67,9 @@ jobs:
       - name: create patch branch
         id: patch
         run: |
+          git config user.email "UAF-asf-apd@alaska.edu"
+          git config user.name "tools-bot"
+
           export PATCH_FILE=$(find . -iname "hyp3-insar-gamma-*.patch" | head -1)
           export PATCH_BRANCH=${PATCH_FILE#./}
           export PATCH_BRANCH=${PATCH_BRANCH%.patch}
@@ -109,6 +112,9 @@ jobs:
       - name: create patch branch
         id: patch
         run: |
+          git config user.email "UAF-asf-apd@alaska.edu"
+          git config user.name "tools-bot"
+
           export PATCH_FILE=$(find . -iname "hyp3-rtc-gamma-*.patch" | head -1)
           export PATCH_BRANCH=${PATCH_FILE#./}
           export PATCH_BRANCH=${PATCH_BRANCH%.patch}
@@ -151,6 +157,9 @@ jobs:
       - name: create patch branch
         id: patch
         run: |
+          git config user.email "UAF-asf-apd@alaska.edu"
+          git config user.name "tools-bot"
+
           export PATCH_FILE=$(find . -iname "hyp3-insar-isce-*.patch" | head -1)
           export PATCH_BRANCH=${PATCH_FILE#./}
           export PATCH_BRANCH=${PATCH_BRANCH%.patch}

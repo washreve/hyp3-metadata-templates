@@ -83,6 +83,8 @@ jobs:
 
       - name: open PR to hyp3-insar-gamma
         uses: repo-sync/pull-request@v2
+        env:
+          GITHUB_REPOSITORY: ASFHyP3/hyp3-insar-gamma
         with:
           source_branch:  ${{ steps.patch.outputs.branch }}
           destination_branch: develop
@@ -129,6 +131,8 @@ jobs:
 
       - name: open PR to hyp3-rtc-gamma
         uses: repo-sync/pull-request@v2
+        env:
+          GITHUB_REPOSITORY: ASFHyP3/hyp3-rtc-gamma
         with:
           source_branch:  ${{ steps.patch.outputs.branch }}
           destination_branch: develop
@@ -175,6 +179,8 @@ jobs:
 
       - name: open PR to hyp3-insar-isce
         uses: repo-sync/pull-request@v2
+        env:
+          GITHUB_REPOSITORY: ASFHyP3/hyp3-insar-isce
         with:
           source_branch:  ${{ steps.patch.outputs.branch }}
           destination_branch: develop

@@ -85,6 +85,7 @@ jobs:
           echo -e "Applying $PATCH_FILE, see:" >> pr-message.md
           echo -e "https://github.com/ASFHyP3/hyp3-metadata-templates/compare/${{ github.event.before }}..$GITHUB_SHA" >> pr-message.md
 
+          export GITHUB_TOKEN=${{ secrets.TOOLS_BOT_PAK }}
           hub pull-request -f -r ASFHyP3/tools -l tools-bot,documentation -F pr-message.md
 
 
@@ -102,6 +103,8 @@ jobs:
           name: patches
 
       - name: create patch branch and open PR
+        env:
+
         id: patch
         run: |
           git config user.email "UAF-asf-apd@alaska.edu"
@@ -122,6 +125,7 @@ jobs:
           echo -e "Applying $PATCH_FILE, see:" >> pr-message.md
           echo -e "https://github.com/ASFHyP3/hyp3-metadata-templates/compare/${{ github.event.before }}..$GITHUB_SHA" >> pr-message.md
 
+          export GITHUB_TOKEN=${{ secrets.TOOLS_BOT_PAK }}
           hub pull-request -f -r ASFHyP3/tools -l tools-bot,documentation -F pr-message.md
 
 
@@ -159,4 +163,5 @@ jobs:
           echo -e "Applying $PATCH_FILE, see:" >> pr-message.md
           echo -e "https://github.com/ASFHyP3/hyp3-metadata-templates/compare/${{ github.event.before }}..$GITHUB_SHA" >> pr-message.md
 
+          export GITHUB_TOKEN=${{ secrets.TOOLS_BOT_PAK }}
           hub pull-request -f -r ASFHyP3/tools -l tools-bot,documentation -F pr-message.md

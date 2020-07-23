@@ -77,6 +77,7 @@ jobs:
           git checkout -b $PATCH_BRANCH
           cd hyp3_insar_gamma/etc
           patch -p3 < ../../${PATCH_FILE}
+          git add .
           git commit -m "Apply ${PATCH_FILE}"
           git push origin $PATCH_BRANCH
 
@@ -122,6 +123,7 @@ jobs:
           git checkout -b $PATCH_BRANCH
           cd hyp3_rtc_gamma/etc
           patch -p3 < ../../${PATCH_FILE}
+          git add .
           git commit -m "Apply ${PATCH_FILE}"
           git push origin $PATCH_BRANCH
 
@@ -167,6 +169,7 @@ jobs:
           git checkout -b $PATCH_BRANCH
           cd hyp3_insar_isce/etc
           patch -p3 < ../../${PATCH_FILE}
+          git add .
           git commit -m "Apply ${PATCH_FILE}"
           git push origin $PATCH_BRANCH
 

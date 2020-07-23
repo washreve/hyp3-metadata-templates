@@ -103,8 +103,6 @@ jobs:
           name: patches
 
       - name: create patch branch and open PR
-        env:
-
         id: patch
         run: |
           git config user.email "UAF-asf-apd@alaska.edu"

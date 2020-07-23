@@ -85,7 +85,7 @@ jobs:
           echo -e "Applying $PATCH_FILE, see:" >> pr-message.md
           echo -e "https://github.com/ASFHyP3/hyp3-metadata-templates/compare/${{ github.event.before }}..$GITHUB_SHA" >> pr-message.md
 
-          hub pull-request -f -r ASFHyP3/tools -l tools-bot -F pr-message.md
+          hub pull-request -f -r ASFHyP3/tools -l tools-bot,documentation -F pr-message.md
 
 
   hyp3-rtc-gamma:
@@ -122,7 +122,7 @@ jobs:
           echo -e "Applying $PATCH_FILE, see:" >> pr-message.md
           echo -e "https://github.com/ASFHyP3/hyp3-metadata-templates/compare/${{ github.event.before }}..$GITHUB_SHA" >> pr-message.md
 
-          hub pull-request -f -r ASFHyP3/tools -l tools-bot -F pr-message.md
+          hub pull-request -f -r ASFHyP3/tools -l tools-bot,documentation -F pr-message.md
 
 
   hyp3-insar-isce:
@@ -159,4 +159,4 @@ jobs:
           echo -e "Applying $PATCH_FILE, see:" >> pr-message.md
           echo -e "https://github.com/ASFHyP3/hyp3-metadata-templates/compare/${{ github.event.before }}..$GITHUB_SHA" >> pr-message.md
 
-          hub pull-request -f -r ASFHyP3/tools -l tools-bot -F pr-message.md
+          hub pull-request -f -r ASFHyP3/tools -l tools-bot,documentation -F pr-message.md

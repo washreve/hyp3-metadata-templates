@@ -68,7 +68,8 @@ jobs:
         id: patch
         run: |
           export PATCH_FILE=$(find . -iname "hyp3-insar-gamma-*.patch" | head -1)
-          export PATCH_BRANCH=${${PATCH_FILE#./}/.patch}
+          export PATCH_BRANCH=${PATCH_FILE#./}
+          export PATCH_BRANCH=${PATCH_BRANCH%.patch}
           echo "::set-output name=branch::${PATCH_BRANCH}"
           git checkout -b $PATCH_BRANCH
           cd hyp3_insar_gamma/etc
@@ -109,7 +110,8 @@ jobs:
         id: patch
         run: |
           export PATCH_FILE=$(find . -iname "hyp3-rtc-gamma-*.patch" | head -1)
-          export PATCH_BRANCH=${${PATCH_FILE#./}/.patch}
+          export PATCH_BRANCH=${PATCH_FILE#./}
+          export PATCH_BRANCH=${PATCH_BRANCH%.patch}
           echo "::set-output name=branch::${PATCH_BRANCH}"
           git checkout -b $PATCH_BRANCH
           cd hyp3_rtc_gamma/etc
@@ -150,7 +152,8 @@ jobs:
         id: patch
         run: |
           export PATCH_FILE=$(find . -iname "hyp3-insar-isce-*.patch" | head -1)
-          export PATCH_BRANCH=${${PATCH_FILE#./}/.patch}
+          export PATCH_BRANCH=${PATCH_FILE#./}
+          export PATCH_BRANCH=${PATCH_BRANCH%.patch}
           echo "::set-output name=branch::${PATCH_BRANCH}"
           git checkout -b $PATCH_BRANCH
           cd hyp3_insar_isce/etc

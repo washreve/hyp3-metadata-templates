@@ -177,16 +177,14 @@ The basic steps in the radiometric terrain correction process are as follows:
 2. If required, data is multi-looked to the desired number of looks (default for 30-m products is 6 looks for GRD granules and 3 for SLC; 10-m products default to one look). This product used [LOOKS] look(s).
 3. A DEM is extracted from the ASF DEM heap covering the granule to be corrected.
 4. A mapping function is created, mapping from DEM space into SAR space.
+5. By default, DEM coregistration is not used. When the DEM Matching option is selected for a custom order, the following steps will be performed. *By default the process will skip from step 4 to step 6.*
+    1. A simulated SAR image is created.
+    2. The simulated SAR image and the real SAR image are coregistered.
+    3. The mapping function is updated with the coregistration information.
+6. The SAR image is radiometrically corrected using a pixel integration approach to remove radiometric distortions in foreshortening or layover areas.
+7. The inversion of the mapping function is used to terrain correct and geocode the radiometrically corrected SAR image.
+8. Post processing creates GeoTIFF, PNG and KMZ files, along with associated metadata.
 
-   *DEM coregistration is not performed by default. When the matching option is selected for a custom order, steps 5-7 are performed.
-   By default, the process will skip from step 4 to step 8.*
-
-5. A simulated SAR image is created.
-6. The simulated SAR image and the real SAR image are coregistered.
-7. The mapping function is updated with the coregistration information.
-8. The SAR image is radiometrically corrected using a pixel integration approach to remove radiometric distortions in foreshortening or layover areas.
-9. The inversion of the mapping function is used to terrain correct and geocode the radiometrically corrected SAR image.
-10. Post processing creates GeoTIFF, PNG and KMZ files, along with associated metadata.
 *************
 ### The Sentinel-1 mission ###
 

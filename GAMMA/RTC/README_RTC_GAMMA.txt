@@ -34,7 +34,7 @@ The source granule used to generate the products contained in this folder is:
 -------------
 ### Using this data ###
 
-This data was processed by the ASF DAAC HyP3 [YEARPROCESSED] using the HYP3 RTC GAMMA plugin version [HYP3_VER] and GAMMA software [GAMMA_VER].  Contains modified Copernicus Sentinel data [YEARACQUIRED], processed by ESA.
+This data was processed by the ASF DAAC HyP3 [YEARPROCESSED] using the HyP3 RTC GAMMA plugin version [HYP3_VER] and GAMMA software [GAMMA_VER].  Contains modified Copernicus Sentinel data [YEARACQUIRED], processed by ESA.
 
 When using this data in a publication or presentation, we ask you minimally include the following acknowledgement:
 

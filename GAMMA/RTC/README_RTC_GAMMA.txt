@@ -19,12 +19,12 @@ bbbbbb:     Start Time of Acquisition (HHMMSS)
 pp:         Polarization
 o:          Orbit Type: Precise (P), Restituted (R), or Original Predicted (O)
 zz:         Terrain Correction Resolution
-d:          Gamma-0 (G) or Sigma-0 (S) Output
-e:          Power (P) or Amplitude (A) Output
-f:          Unmasked (U) or Water Masked (W)
-k:          Not Filtered (N) or Filtered (F)
-l:          Entire Area (E) or Clipped Area (C)
-m:          Dead Reckoning (D) or DEM Matching (M)
+d:          Gamma-0 (g) or Sigma-0 (s) Output
+e:          Power (p) or Amplitude (a) Output
+f:          Unmasked (u) or Water Masked (w)
+k:          Not Filtered (n) or Filtered (f)
+l:          Entire Area (e) or Clipped Area (c)
+m:          Dead Reckoning (d) or DEM Matching (m)
 ssss:       Product ID
 ```
 

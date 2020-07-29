@@ -36,16 +36,17 @@ The source granule used to generate the products contained in this folder is:
 
 This data was processed by the ASF DAAC HyP3 [YEARPROCESSED] using the HyP3 RTC GAMMA plugin version [HYP3_VER] and GAMMA software [GAMMA_VER].  Contains modified Copernicus Sentinel data [YEARACQUIRED], processed by ESA.
 
-When using this data in a publication or presentation, we ask you minimally include the following acknowledgement:
+Please refer to the ASF Sentinel-1 RTC User Guide for in-depth guidance on the use of this dataset:
+https://asf.alaska.edu/wp-content/uploads/2019/02/Sentinel_RTC_Users_Guide.pdf
 
-    RTC product processed by ASF DAAC HyP3 [YEARPROCESSED], contains modified Copernicus Sentinel data [YEARACQUIRED].
+Minimally, When using this data in a publication or presentation, we ask you include the following acknowledgement:
+
+    RTC product processed by ASF DAAC HyP3 [YEARPROCESSED], contains modified Copernicus Sentinel data [YEARACQUIRED], processed by ESA.
 
 DOIs are also provided for citation when discussing the HyP3 software or plugins:
 * HyP3 processing environment, DOI: [10.5281/zenodo.3962581](https://doi.org/10.5281/zenodo.3962581)
 * HyP3 RTC GAMMA plugin, DOI: [10.5281/zenodo.3962936](https://doi.org/10.5281/zenodo.3962936)
 
-Please refer to the ASF Sentinel-1 RTC User Guide for additional guidance on the use of this dataset:
-https://asf.alaska.edu/wp-content/uploads/2019/02/Sentinel_RTC_Users_Guide.pdf
 
 For information on the GAMMA SAR software, please see: https://gamma-rs.ch/
 

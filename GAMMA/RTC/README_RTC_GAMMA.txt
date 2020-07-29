@@ -38,7 +38,7 @@ This data was processed by the ASF DAAC HyP3 [YEARPROCESSED] using the HyP3 RTC 
 
 When using this data in a publication or presentation, we ask you minimally include the following acknowledgement:
 
-    RTC products processed by ASF DAAC HyP3 [YEARPROCESSED], contains modified Copernicus Sentinel data [YEARACQUIRED].
+    RTC product processed by ASF DAAC HyP3 [YEARPROCESSED], contains modified Copernicus Sentinel data [YEARACQUIRED].
 
 DOIs are also provided for citation when discussing the HyP3 software or plugins:
 * HyP3 processing environment, DOI: [10.5281/zenodo.3962581](https://doi.org/10.5281/zenodo.3962581)

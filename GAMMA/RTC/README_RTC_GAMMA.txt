@@ -1,7 +1,7 @@
+<!-- Consider opening this document in a Markdown editor/viewer for easier reading -->
+
 ASF RTC Data Package (GAMMA)
 ============================
-
-<!-- Consider opening this document in a Markdown editor/viewer for easier reading -->
 
 The side-looking geometry of SAR imagery leads to geometric and radiometric distortions, causing foreshortening, layover, shadowing, and radiometric variations due to terrain slope. Radiometric terrain correction converts unprocessed SAR data into geocoded TIFF images with values directly relating to physical properties, alleviating the  inherent SAR distortions. The process improves backscatter estimates and provides geolocation information, so images can be used as input for applications such as the monitoring of deforestation, land-cover classification, and delineation of wet snow-covered areas.
 

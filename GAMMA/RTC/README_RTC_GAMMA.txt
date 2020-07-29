@@ -41,7 +41,7 @@ Please refer to the ASF Sentinel-1 RTC User Guide for in-depth guidance on the u
 
 Minimally, When using this data in a publication or presentation, we ask you include the following acknowledgement:
 
-    RTC product processed by ASF DAAC HyP3 [YEARPROCESSED], contains modified Copernicus Sentinel data [YEARACQUIRED], processed by ESA.
+    RTC product processed by ASF DAAC HyP3 [YEARPROCESSED] using GAMMA software. Contains modified Copernicus Sentinel data [YEARACQUIRED], processed by ESA.
 
 DOIs are also provided for citation when discussing the HyP3 software or plugins:
 * HyP3 processing environment, DOI: [10.5281/zenodo.3962581](https://doi.org/10.5281/zenodo.3962581)

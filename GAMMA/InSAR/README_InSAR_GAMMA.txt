@@ -67,7 +67,7 @@ The wrapped interferogram is output in both a georeferenced PNG and KMZ format. 
 
 The wrapped interferogram image is generated from the interferogram phase prior to unwrapping.
 
-The wrapped interferogram files are tagged with _color_phase, and PNG files are generated in two different resolutions. The file _color_phase.png is a small browse image (1024 pixels wide), and _color_phase_large.png is of higher resolution (2048 pixels wide). The KMZ file is 2048 pixels wide.
+The wrapped interferogram files are tagged with `_color_phase` and are 2048 pixels wide.
 
 ----------------
 ## 2. Unwrapped Interferogram
@@ -76,7 +76,7 @@ The unwrapped interferogram uses a reference point to convert the wrapped 2-pi s
 
 The GeoTIFF contains the unwrapped values for each pixel, corresponding to the change in distance along the line of sight of the sensor. Positive values indicate movement away from the sensor (caused by subsidence or lateral movement away from the sensor) and negative values indicate movement towards the sensor (uplift or lateral movement towards the sensor). Note that deformation often includes both vertical and horizontal components, and additional processing or external reference data is required to calculate the relative contributions of vertical and lateral movement.
 
-The unwrapped interferogram files are tagged with _unw_phase, and the _unw_phase.tif file contains the data values. PNG files are generated in two different resolutions; the file _unw_phase.png is a small browse image (1024 pixels wide), and _unw_phase_large.png is of higher resolution (2048 pixels wide). Also included is a KMZ file (2048 pixels wide).
+The unwrapped interferogram files are tagged with `_unw_phase`, and the `_unw_phase.tif` file contains the data values. Both the PNG and KMZ files are 2048 pixels wide.
 
 ----------------
 ## 3. Line-of-Sight Displacement Map
@@ -226,17 +226,11 @@ The detailed process, including the calls to GAMMA software, is as follows:
 *************
 # DEMs #
 
-ASF uses publicly-available Digital Elevation Models for processing SAR data. The DEM used will vary by granule location; the best available DEM with full coverage of the granule extent will be used for processing any given granule. The source DEMs include the National Elevation Dataset (NED), the Shuttle Radar Topography Mission (SRTM), the Copernicus Land Monitoring Service EU-DEM (EUDEM), the Greenland Ice sheet Mapping Project DEM (GIMP), and the Reference Elevation Model of Antarctica DSM (REMA).
+ASF uses publicly-available Digital Elevation Models for processing SAR data. The DEM used will vary by granule location; the best available DEM with full coverage of the granule extent will be used for processing any given granule. The source DEMs include the National Elevation Dataset (NED) and the Shuttle Radar Topography Mission (SRTM).
 
 The NED provides the best available public domain raster elevation data of the conterminous United States, Alaska, Hawaii, and territorial islands in a seamless format. The NED is derived from diverse source data, processed to a common coordinate system and unit of vertical measure. For more information, refer to https://pubs.er.usgs.gov/publication/70201572. To download the data, visit https://viewer.nationalmap.gov/basic and expand the Elevation Products (3DEP) section.  
 
 The SRTM was flown aboard the space shuttle Endeavour February 11-22, 2000. The National Aeronautics and Space Administration (NASA) and the National Geospatial-Intelligence Agency (NGA) participated in an international project to acquire radar data which were used to create the first near-global set of land elevations. For more information and to access the full SRTM dataset, refer to https://www.usgs.gov/centers/eros/science/usgs-eros-archive-digital-elevation-shuttle-radar-topography-mission-srtm-1-arc?qt-science_center_objects=0#qt-science_center_objects.  
-
-The EUDEM combines data from a variety of sources, including the ASTER DEM, the SRTM, and Russian topographic maps. For more information and to access the full EU-DEM dataset, refer to https://land.copernicus.eu/imagery-in-situ/eu-dem/eu-dem-v1.1.  
-
-The GIMP DEM was constructed by combining ASTER and SPOT 5 DEMs over the ice sheet periphery and margin with AVHRR photoclinometry for the interior and far north, and calibrating the data to approximate mean ICESat/GLAS elevations from 2003 to 2009. For more information and to access the full GIMP dataset, refer to https://nsidc.org/data/nsidc-0645.
-
-The REMA DSM was constructed from hundreds of thousands of individual stereoscopic Digital Elevation Models extracted from pairs of submeter-resolution DigitalGlobe satellite imagery acquired between 2009 and 2017, and vertically registered to altimetry measurements from Cryosat-2 and ICESat. For more information and to access the full REMA dataset at the original 8-meter resolution, refer to https://www.pgc.umn.edu/data/rema.
 
 *************
 # The Sentinel-1 mission #
@@ -255,5 +249,5 @@ uso@asf.alaska.edu
 907-474-5041  
 
 -------------
-Revised 2020-03-11
+Revised 2020-07-29
 

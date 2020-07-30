@@ -3,7 +3,7 @@
 ASF RTC Data Package (GAMMA)
 ============================
 
-This folder contains radiometric terrain corrected (RTC) products, and their associated files. They are projected to [PCS], and the pixel spacing is [SPACING] m.
+This folder contains radiometric terrain corrected (RTC) products and their associated files. This data was processed by the ASF DAAC using the HyP3 RTC GAMMA plugin version [HYP3_VER] and GAMMA software release [GAMMA_VER]. They are projected to [PCS], and the pixel spacing is [SPACING] m.
 
 Processing Date/Time: [DATE] [TIME] UTC
 
@@ -33,12 +33,10 @@ The source granule used to generate the products contained in this folder is:
 
 ### Using this data ###
 
-This data was processed by the ASF DAAC HyP3 [YEARPROCESSED] using the HyP3 RTC GAMMA plugin version [HYP3_VER] and GAMMA software [GAMMA_VER].  Contains modified Copernicus Sentinel data [YEARACQUIRED], processed by ESA.
-
 Please refer to the ASF Sentinel-1 RTC User Guide for in-depth guidance on the use of this dataset:
 * https://asf.alaska.edu/wp-content/uploads/2019/02/Sentinel_RTC_Users_Guide.pdf
 
-Minimally, When using this data in a publication or presentation, we ask you include the following acknowledgement:
+When using this data in a publication or presentation, we ask that you include the following acknowledgement:
 
     RTC product processed by ASF DAAC HyP3 [YEARPROCESSED] using GAMMA software. Contains modified Copernicus Sentinel data [YEARACQUIRED], processed by ESA.
 
@@ -46,8 +44,7 @@ DOIs are also provided for citation when discussing the HyP3 software or plugins
 * HyP3 processing environment, DOI: [10.5281/zenodo.3962581](https://doi.org/10.5281/zenodo.3962581)
 * HyP3 RTC GAMMA plugin, DOI: [10.5281/zenodo.3962936](https://doi.org/10.5281/zenodo.3962936)
 
-
-For information on the GAMMA SAR software, please see: https://gamma-rs.ch/
+For information on GAMMA SAR software, please see: https://gamma-rs.ch/
 
 *************
 # Product Contents #

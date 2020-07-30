@@ -59,7 +59,7 @@ GeoTIFF files are generated for each polarization available in the source granul
 
 These files have been processed to output [POWERTYPE]-0 [FORMAT].
 
-Each RTC image [FILT] been speckle filtered. The default is to not apply a speckle filter, but the user can choose to apply a filter when ordering the RTC imagery. When the filtering option is selected, the S1TBX default Speckle Filter is applied during RTC processing to remove speckle while preserving edges. When applied, it is a Lee Sigma filter set to one look with a window size of 7x7, a sigma of 0.9 and a target window size of 3x3.
+[FILT] speckle filter has been applied to the RTC images. The default is to not apply a speckle filter, but the user can choose to apply a filter when ordering the RTC imagery. When the filtering option is selected, the S1TBX default Speckle Filter is applied during RTC processing to remove speckle while preserving edges. When applied, it is a Lee Sigma filter set to one look with a window size of 7x7, a sigma of 0.9 and a target window size of 3x3.
 
 -------------
 ## 2. Browse images in grayscale and color
@@ -158,4 +158,4 @@ uso@asf.alaska.edu
 907-474-5041
 
 -------------
-Revised 2020-06-02
+Revised 2020-07-30

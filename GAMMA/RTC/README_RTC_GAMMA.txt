@@ -1,5 +1,3 @@
-
-
 ASF RTC Data Package (GAMMA)
 ============================
 
@@ -72,7 +70,7 @@ GeoTIFF files are generated for each polarization available in the source granul
 
 These files have been processed to output [POWERTYPE]-0 [FORMAT].
 
-Each RTC image [FILT] been speckle filtered. The default is to not apply a speckle filter, but the user can choose to apply a filter when ordering the RTC imagery. When the filtering option is selected, an Enhanced Lee filter is applied during RTC processing to remove speckle while preserving edges. When applied, the filter is set to a dampening factor of 1, with a box size of 7x7 pixels and [FLOOKS] looks.
+[FILT] speckle filter has been applied to the RTC images. The default is to not apply a speckle filter, but the user can choose to apply a filter when ordering the RTC imagery. When the filtering option is selected, an Enhanced Lee filter is applied during RTC processing to remove speckle while preserving edges. When applied, the filter is set to a dampening factor of 1, with a box size of 7x7 pixels and [FLOOKS] looks.
 
 -------------
 ## 2. Browse images in grayscale and color
@@ -203,4 +201,4 @@ uso@asf.alaska.edu
 907-474-5041
 
 -------------
-Revised 2020-07-28
+Revised 2020-07-29

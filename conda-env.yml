@@ -14,6 +14,7 @@ dependencies:
   - importlib_metadata
   - jinja2
   - gdal
+  - pillow
   - pip:
     # for packaging and testing
     - s3pypi

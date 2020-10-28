@@ -8,6 +8,9 @@ and uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [unreleased]
 
+### Added
+* Added description of the scattering area map to the RTC GAMMA readme. 
+
 ### Removed
 * Removed description of .iso.xml file eliminated in hyp3-rtc-gamma v2.3.0.
 

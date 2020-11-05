@@ -1,10 +1,10 @@
+import copy
 import re
 from base64 import b64encode
-from copy import deepcopy
 from datetime import datetime
 from io import BytesIO
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Tuple
 
 from PIL import Image
 from jinja2 import Environment, PackageLoader, StrictUndefined, select_autoescape
@@ -47,21 +47,13 @@ def create_metadata_file_set(product_dir: Path, granule_name: str, dem_name: str
         processor_version=processor_version,
     )
     files = []
-    generators = [
-        create_product_xmls,
-        create_browse_xmls,
-        create_readme,
-        create_dem_xml,
-        create_inc_map_xml,
-        create_ls_map_xml,
-        create_area_xml,
-    ]
-    for generator in generators:
-        output = generator(payload)
-        if isinstance(output, list):
-            files.extend(output)
-        elif isinstance(output, Path):
-            files.append(output)
+    files.extend(create_product_xmls(payload))
+    files.extend(create_browse_xmls(payload))
+
+    files.append(create_readme(payload))
+    files.append(create_dem_xml(payload))
+    files.append(create_inc_map_xml(payload))
+    files.append(create_ls_map_xml(payload))
 
     return files
 
@@ -74,6 +66,8 @@ def get_dem_resolution(dem_name: str) -> str:
             'NED13': '1/3 arc seconds (about 10 meters)',
             'NED1': '1 arc second (about 30 meters)',
             'NED2': '2 arc seconds (about 60 meters)',
+            'TDT': '[insert value here]',
+            'IFSAR': '[insert value here]',
             'REMA': '1 arc second (about 30 meters)',
             'SRTMGL1': '1 arc second (about 30 meters)',
             'SRTMGL3': '3 arc seconds (about 90 meters)',
@@ -88,6 +82,10 @@ def get_dem_template_id(dem_name: str) -> str:
         return 'eu'
     if dem_name.startswith('GIMP'):
         return 'gimp'
+    if dem_name.startswith('TDT'):
+        return 'tdt'
+    if dem_name.startswith('IFSAR'):
+        return 'ifsar'
     if dem_name.startswith('NED'):
         return 'ned'
     if dem_name.startswith('REMA'):
@@ -173,6 +171,8 @@ def marshal_metadata(product_dir: Path, granule_name: str, dem_name: str, proces
 
 
 def create_readme(payload: dict) -> Path:
+    payload = copy.deepcopy(payload)
+
     reference_file = payload['product_dir'] / f'{payload["product_dir"].name}_{payload["polarizations"][0]}.tif'
 
     return create_metadata_file(
@@ -181,7 +181,7 @@ def create_readme(payload: dict) -> Path:
 
 
 def create_product_xmls(payload: dict) -> List[Path]:
-    payload = deepcopy(payload)
+    payload = copy.deepcopy(payload)
 
     output_files = []
     for pol in payload['polarizations']:
@@ -196,6 +196,7 @@ def create_product_xmls(payload: dict) -> List[Path]:
 
 
 def create_dem_xml(payload: dict) -> Path:
+    payload = copy.deepcopy(payload)
     reference_file = payload['product_dir'] / f'{payload["product_dir"].name}_dem.tif'
 
     dem_template_id = get_dem_template_id(payload['dem_name'])
@@ -204,6 +205,7 @@ def create_dem_xml(payload: dict) -> Path:
 
 
 def create_browse_xmls(payload: dict) -> List[Path]:
+    payload = copy.deepcopy(payload)
     reference_file = payload['product_dir'] / f'{payload["product_dir"].name}.png'
 
     output_files = [
@@ -220,29 +222,23 @@ def create_browse_xmls(payload: dict) -> List[Path]:
 
 
 def create_inc_map_xml(payload: dict) -> Path:
+    payload = copy.deepcopy(payload)
     reference_file = payload['product_dir'] / f'{payload["product_dir"].name}_inc_map.tif'
     return create_metadata_file(payload, 'inc_map.xml.j2', reference_file)
 
 
 def create_ls_map_xml(payload: dict) -> Path:
+    payload = copy.deepcopy(payload)
     reference_file = payload['product_dir'] / f'{payload["product_dir"].name}_ls_map.tif'
     return create_metadata_file(payload, 'ls_map.xml.j2', reference_file)
 
 
-def create_area_xml(payload: dict) -> Path:
-    reference_file = payload['product_dir'] / f'{payload["product_dir"].name}_area.tif'
-    return create_metadata_file(payload, 'area.xml.j2', reference_file)
-
-
-def create_metadata_file(payload: dict, template: str, reference_file: Path, out_ext: str = 'xml',
-                         strip_ext: bool = False, strip_pol: bool = False) -> Optional[Path]:
-    if not reference_file.exists():
-        return None
-
-    payload = deepcopy(payload)
-    info = gdal.Info(str(reference_file), format='json')
-    payload['pixel_spacing'] = info['geoTransform'][1]
-    payload['projection'] = get_projection(info['coordinateSystem']['wkt'])
+def create_metadata_file(payload: dict, template: str, reference_file: Path = None, out_ext: str = 'xml',
+                         strip_ext: bool = False, strip_pol: bool = False) -> Path:
+    if reference_file:
+        info = gdal.Info(str(reference_file), format='json')
+        payload['pixel_spacing'] = info['geoTransform'][1]
+        payload['projection'] = get_projection(info['coordinateSystem']['wkt'])
 
     payload['thumbnail_encoded_string'] = get_thumbnail_encoded_string(reference_file)
 
